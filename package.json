@@ -1,0 +1,36 @@
+{
+  "name": "bharat-cyber-browser",
+  "productName": "Bharat Cyber Browser",
+  "version": "0.2.0",
+  "private": true,
+  "author": "Bharat Cyber Search",
+  "description": "A local-first Chromium browser with cybersecurity intelligence search",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/2300031120/bharat-cyber-browser.git"
+  },
+  "type": "module",
+  "main": "desktop/main.js",
+  "scripts": {
+    "start": "electron .",
+    "desktop": "electron .",
+    "dev": "node server.js",
+    "test": "node --test",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
+  },
+  "engines": {
+    "node": ">=24.13.0"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^8.0.1",
+    "@electron-forge/maker-squirrel": "^8.0.1",
+    "electron": "45.4.1"
+  },
+  "config": {
+    "forge": "./forge.config.cjs"
+  },
+  "dependencies": {
+    "update-electron-app": "^3.3.0"
+  }
+}

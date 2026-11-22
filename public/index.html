@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a1714"><meta name="description" content="Local-first cybersecurity intelligence and passive asset research.">
+  <link rel="manifest" href="/manifest.json"><link rel="icon" href="/icon.svg" type="image/svg+xml"><link rel="stylesheet" href="/style.css">
+  <title>Bharat Cyber Search</title>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="Bharat Cyber Search home"><span class="brand-mark">b.</span><span>Bharat<span class="brand-light">Cyber Search</span></span></a>
+    <div class="header-actions"><span class="local-pill"><i></i> Local index</span><button id="sync-button" class="sync-button" type="button"><span aria-hidden="true">↻</span> Sync intel</button></div>
+  </header>
+  <main class="shell">
+    <section class="hero">
+      <div class="hero-copy"><p class="eyebrow">YOUR PERSONAL CYBER RESEARCH DESK</p><h1>Find the signal.<br><span>Keep the context.</span></h1><p class="intro">Search vulnerability intelligence and Indian security advisories locally. Run passive asset lookups only when you choose.</p></div>
+      <div class="hero-orbit" aria-hidden="true"><div class="orbit-ring"></div><div class="orbit-core">⌘</div><span class="orbit-node node-one">CVE</span><span class="orbit-node node-two">CTI</span><span class="orbit-node node-three">IN</span></div>
+    </section>
+    <section class="status-strip" aria-live="polite">
+      <div class="status-cell"><span class="status-label">LOCAL RECORDS</span><strong id="record-count">—</strong></div>
+      <div class="status-cell"><span class="status-label">SOURCES READY</span><strong id="source-count">—</strong></div>
+      <div class="status-cell status-wide"><span class="status-label">LAST SYNC</span><strong id="last-sync">Not synced yet</strong></div>
+      <div class="sync-progress hidden" id="sync-progress"><span class="spinner"></span><span id="sync-message">Preparing index…</span></div>
+    </section>
+    <section class="source-list" id="source-list" aria-label="Intel source status"></section>
+    <nav class="tabs" aria-label="Research tools">
+      <button class="tab active" data-tab="intel" type="button"><span>⌕</span> Intel search</button>
+      <button class="tab" data-tab="asset" type="button"><span>⌁</span> Passive asset lookup</button>
+    </nav>
+    <section id="intel-view" class="tool-view">
+      <form id="intel-form" class="query-form">
+        <label class="sr-only" for="intel-query">Search local security intelligence</label><span class="query-icon" aria-hidden="true">⌕</span>
+        <input id="intel-query" name="q" maxlength="300" placeholder="Search CVEs, products, techniques, or advisories" autocomplete="off">
+        <button class="search-button" type="submit">Search <span aria-hidden="true">→</span></button>
+      </form>
+      <div class="filters">
+        <label>Source<select id="kind-filter"><option value="all">All intelligence</option><option value="cve">CVE records</option><option value="kev">Known exploited (KEV)</option><option value="attack">MITRE ATT&amp;CK</option><option value="certin">CERT-In</option></select></label>
+        <label>Severity<select id="severity-filter"><option value="">Any severity</option><option value="critical">Critical</option><option value="high">High</option><option value="medium">Medium</option><option value="low">Low</option></select></label>
+        <label class="check-filter"><input id="kev-filter" type="checkbox"><span>Known exploited only</span></label>
+        <span class="local-caption"><span>●</span> Search runs on this device</span>
+      </div>
+      <aside id="partial-index-note" class="partial-index-note hidden" aria-live="polite">The CVE index is still building. Results are available as records are added and may be incomplete until sync finishes.</aside>
+      <details class="glossary">
+        <summary>Security terms · English</summary>
+        <div class="glossary-content">
+          <label for="glossary-language">Explain terms in
+            <select id="glossary-language" aria-label="Glossary language">
+              <option value="en">English</option><option value="te">తెలుగు</option><option value="hi">हिन्दी</option>
+            </select>
+          </label>
+          <dl id="glossary-terms" class="glossary-terms"></dl>
+        </div>
+      </details>
+      <div class="results-heading"><div><p class="eyebrow">INTELLIGENCE INDEX</p><h2 id="result-title">Your local research index</h2></div><span id="result-count" class="result-count"></span></div>
+      <div id="intel-results" class="result-list" aria-live="polite"><div class="empty-card"><strong>Start with a search</strong><span>Sync public intelligence sources, then search the local index.</span></div></div>
+    </section>
+    <section id="asset-view" class="tool-view hidden">
+      <div class="asset-intro"><div><p class="eyebrow">AUTHORIZED ASSETS ONLY</p><h2>Passive domain &amp; IP research</h2><p>Look up certificate history, DNS records, and registration details without connecting to or scanning the target.</p></div><div class="passive-mark">PASSIVE<br><strong>ONLY</strong></div></div>
+      <form id="asset-form" class="asset-form">
+        <label class="sr-only" for="asset-target">Public domain or IP</label><input id="asset-target" maxlength="260" placeholder="example.com or a public IP address" autocomplete="off">
+        <button id="asset-submit" class="search-button" type="submit" disabled>Look up <span aria-hidden="true">→</span></button>
+      </form>
+      <div class="disclosure"><span class="disclosure-icon">ⓘ</span><div><strong>External lookup disclosure</strong><p>Domains are sent to crt.sh, RDAP, and Google Public DNS. IP addresses are sent to RDAP only. These public services can see the target. Bharat Cyber Search does not save it.</p><label class="consent"><input id="asset-consent" type="checkbox"><span>I own this asset or have permission to investigate it, and I agree to send it to the listed services.</span></label></div></div>
+      <div id="asset-status" class="asset-status" aria-live="polite"></div>
+      <div id="asset-results" class="asset-results" aria-live="polite"></div>
+    </section>
+    <footer><span>Bharat Cyber Search · Personal local research tool</span><span>No paid feeds · No query history · No active scanning</span></footer>
+  </main>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

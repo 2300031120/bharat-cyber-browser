@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'">
+  <link rel="stylesheet" href="app://shell/desktop/shell.css">
+  <title>Bharat Cyber Browser</title>
+</head>
+<body>
+  <header id="chrome">
+    <div class="tab-strip"><div id="tabs" role="tablist" aria-label="Browser tabs"></div><button id="new-tab" title="New tab">＋</button><button id="private-window" title="Open a private window">◉ Private</button></div>
+    <div class="toolbar">
+      <button id="back" title="Back" disabled>←</button><button id="forward" title="Forward" disabled>→</button><button id="reload" title="Reload">↻</button><button id="home" title="Cyber search home">⌂</button>
+      <form id="address-form"><label class="sr-only" for="address">Address or cyber-intelligence search</label><input id="address" autocomplete="off" spellcheck="false" placeholder="Search cyber intelligence or enter a website address"><button type="submit" aria-label="Go">→</button></form>
+      <button id="bookmark" title="Bookmark this page">☆</button><button id="bookmarks" title="Bookmarks">Bookmarks</button><button id="history" title="History">History</button>
+    </div>
+    <div id="collection-panel" class="collection-panel hidden" aria-live="polite"></div>
+    <div id="download-notice" class="download-notice hidden" aria-live="polite"></div>
+  </header>
+  <script type="module" src="app://shell/desktop/shell.js"></script>
+</body>
+</html>
